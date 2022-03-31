@@ -1,4 +1,4 @@
-### jta-atomikos 实现分布式锁
+### jta-atomikos 实现分布式事务
 #### 数据表准备：在不同数据库中新建xa_131库，xa_132库。分别对应以下表：
     CREATE TABLE `xa_131` (
       `id` int(11) NOT NULL,
