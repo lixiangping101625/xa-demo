@@ -1,4 +1,16 @@
 ### jta-atomikos 实现分布式锁
+#### 数据表准备：在不同数据库中新建xa_131库，xa_132库。分别对应以下表：
+    CREATE TABLE `xa_131` (
+      `id` int(11) NOT NULL,
+      `name` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    CREATE TABLE `xa_132` (
+      `id` int(11) NOT NULL,
+      `name` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 #### 1、加依赖
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -31,6 +43,7 @@
 
             @Bean("db131")
             public DataSource db131(){
+                //注意是MysqlXADataSource数据源
                 MysqlXADataSource xaDataSource = new MysqlXADataSource();
                 xaDataSource.setUser("root");
                 xaDataSource.setPassword("123456");
@@ -87,6 +100,7 @@
 
             @Bean("db132")
             public DataSource db132(){
+                //注意是MysqlXADataSource数据源
                 MysqlXADataSource xaDataSource = new MysqlXADataSource();
                 xaDataSource.setUser("root");
                 xaDataSource.setPassword("123456");

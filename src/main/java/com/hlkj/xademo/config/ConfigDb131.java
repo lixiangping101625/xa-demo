@@ -24,6 +24,7 @@ public class ConfigDb131 {
 
     @Bean("db131")
     public DataSource db131(){
+        //注意是MysqlXADataSource数据源
         MysqlXADataSource xaDataSource = new MysqlXADataSource();
         xaDataSource.setUser("root");
         xaDataSource.setPassword("123456");
