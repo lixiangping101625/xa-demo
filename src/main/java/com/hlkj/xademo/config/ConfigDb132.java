@@ -36,6 +36,7 @@ public class ConfigDb132 {
     public SqlSessionFactoryBean sqlSessionFactoryBean(@Qualifier("db132") DataSource dataSource) throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+        //设置xml映射文件路径
         ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resourceResolver.getResources("mybatis/db132/*.xml"));
         return sqlSessionFactoryBean;
